@@ -4,7 +4,6 @@ import os
 
 app = Flask(__name__)
 
-# O código agora vai procurar a chave no "cofre" do Railway!
 SLACK_TOKEN = os.environ.get("SLACK_TOKEN")
 
 @app.route('/', methods=['GET'])
@@ -53,8 +52,7 @@ def enviar_teste():
         ]
     }
     
-   resposta = requests.post(url, headers=headers, json=payload)
-    # Agora vamos mostrar a resposta verdadeira do Slack no navegador!
+    resposta = requests.post(url, headers=headers, json=payload)
     return jsonify({"slack_diz": resposta.json()}), 200
 
 if __name__ == '__main__':
