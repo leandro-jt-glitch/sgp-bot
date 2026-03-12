@@ -53,8 +53,9 @@ def enviar_teste():
         ]
     }
     
-    resposta = requests.post(url, headers=headers, json=payload)
-    return jsonify({"status": "Card enviado!"}), 200
+   resposta = requests.post(url, headers=headers, json=payload)
+    # Agora vamos mostrar a resposta verdadeira do Slack no navegador!
+    return jsonify({"slack_diz": resposta.json()}), 200
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
